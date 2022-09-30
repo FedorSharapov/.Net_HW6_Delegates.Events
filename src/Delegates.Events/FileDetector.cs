@@ -50,5 +50,11 @@
             var files = new DirectoryInfo(_path).EnumerateFiles();
             return files.GetMax(x => x.Length);
         }
+
+        public FileInfo? GetMaxLenthFileName()
+        {
+            var files = new DirectoryInfo(_path).EnumerateFiles();
+            return files.GetMax(x => x.Name.Length);
+        }
     }
 }

@@ -23,6 +23,9 @@
             var file = fileDetector.GetMaxLenthFile();
             Console.WriteLine($"Самый большой файл: {file.Name}  {file.Length / 1024} КБ");
 
+            file = fileDetector.GetMaxLenthFileName();
+            Console.WriteLine($"Самое длинное имя файла: {file.Name}");
+
             fileDetector.FileFound -= FileDetector_FileFound;
             fileDetector.StoppedDetection -= FileDetector_StoppedDetection;
             Console.ReadKey();
