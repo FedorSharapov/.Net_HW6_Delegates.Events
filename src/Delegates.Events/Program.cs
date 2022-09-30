@@ -9,7 +9,7 @@
             // Поиск максимального значения
             var numbers = new string[] { "1,7", "1,2", "1,9", "1,3", "1,4", "1,0", "1,5", "1,1", "1,6", "1,8" };
             var max = numbers.GetMax(x => (float)Convert.ToDouble(x));
-            Console.WriteLine($"Максимальное значение: {max}\r\n");
+            ConsoleHelper.WriteLine($"Максимальное значение: [{max}]\r\n");
 
             // Обнаружение файлов в каталоге
             var fileDetector = new FileDetector();
@@ -21,10 +21,10 @@
 
             // Поиск максимальных значений
             var file = fileDetector.GetMaxLenthFile();
-            Console.WriteLine($"Самый большой файл: {file.Name}  {file.Length / 1024} КБ");
+            ConsoleHelper.WriteLine($"Самый большой файл: [{file.Name}]  {file.Length / 1024} КБ");
 
             file = fileDetector.GetMaxLenthFileName();
-            Console.WriteLine($"Самое длинное имя файла: {file.Name}");
+            ConsoleHelper.WriteLine($"Самое длинное имя файла: [{file.Name}]  {file.Name.Length} симв.");
 
             fileDetector.FileFound -= FileDetector_FileFound;
             fileDetector.StoppedDetection -= FileDetector_StoppedDetection;
@@ -33,7 +33,7 @@
 
         private static void FileDetector_FileFound(object? sender, FileArgs e)
         {
-            Console.WriteLine($"{++count}. {e.Name}  {e.Length / 1024} КБ");
+            ConsoleHelper.WriteLine($"{++count}. [{e.Name}]  {e.Length / 1024} КБ");
 
             if (count == 4)
             {
