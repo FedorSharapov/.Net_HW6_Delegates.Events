@@ -44,5 +44,11 @@
         {
             _stopDetection = true;
         }
+
+        public FileInfo? GetMaxLenthFile()
+        {
+            var files = new DirectoryInfo(_path).EnumerateFiles();
+            return files.GetMax(x => x.Length);
+        }
     }
 }

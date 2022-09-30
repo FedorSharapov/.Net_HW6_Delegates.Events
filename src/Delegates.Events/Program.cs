@@ -16,10 +16,15 @@
             fileDetector.FileFound += FileDetector_FileFound;
             fileDetector.StoppedDetection += FileDetector_StoppedDetection;
 
-            Console.WriteLine($"Файлы в директории: {fileDetector.Path}");
+            Console.WriteLine($"Директория: {fileDetector.Path}");
             fileDetector.Detect();
 
+            // Поиск максимальных значений
+            var file = fileDetector.GetMaxLenthFile();
+            Console.WriteLine($"Самый большой файл: {file.Name}  {file.Length / 1024} КБ");
+
             fileDetector.FileFound -= FileDetector_FileFound;
+            fileDetector.StoppedDetection -= FileDetector_StoppedDetection;
             Console.ReadKey();
         }
 
@@ -36,7 +41,7 @@
         
         private static void FileDetector_StoppedDetection()
         {
-            Console.WriteLine("Обнаружение файлов остановлено.");
+            Console.WriteLine("Обнаружение файлов остановлено.\r\n");
         }
     }
 }
