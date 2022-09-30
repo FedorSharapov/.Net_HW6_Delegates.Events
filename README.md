@@ -11,3 +11,19 @@
 `FileArgs` – будет содержать имя файла и наследоваться от `EventArgs`   
 4. Добавить возможность отмены дальнейшего поиска из обработчика;   
 5. Вывести в консоль сообщения, возникающие при срабатывании событий и результат поиска максимального элемента.   
+
+## Отчет по домашнему заданию
+Вывод программы:   
+
+    Коллекция чисел: 1,7; 1,2; 1,9; 1,3; 1,4; 1,0; 1,5; 1,1; 1,6; 1,8   
+    Максимальное значение: 1,9   
+    
+    Директория: D:\Student\С#\Курсы\OTUS.C# Professional\HW\HW_6_Delegates.Events\src\Delegates.Events\bin\Debug\net6.0     
+    1. Delegates.Events.deps.json  0 КБ     
+    2. Delegates.Events.dll  11 КБ     
+    3. Delegates.Events.exe  144 КБ     
+    4. Delegates.Events.pdb  11 КБ     
+    Обнаружение файлов остановлено.     
+
+    Самый большой файл: Delegates.Events.exe  144 КБ   
+    Самое длинное имя файла: Delegates.Events.runtimeconfig.json  35 симв.   
