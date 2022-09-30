@@ -33,7 +33,7 @@
 
         private static void FileDetector_FileFound(object? sender, FileArgs e)
         {
-            Console.WriteLine($"{++count}. {e.Name}");
+            Console.WriteLine($"{++count}. {e.Name}  {e.Length / 1024} КБ");
 
             if (count == 4)
             {

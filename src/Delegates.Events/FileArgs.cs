@@ -4,9 +4,12 @@
     {
         public string Name { get; private set; }
 
-        public FileArgs(string name)
+        public long Length { get; private set; }
+
+        public FileArgs(string name, long length)
         {
             Name = name;
+            Length = length;
         }
     }
 }

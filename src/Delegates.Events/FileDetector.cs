@@ -34,7 +34,7 @@
                     break;
                 }
 
-                FileFound?.Invoke(this, new FileArgs(file.Name));
+                FileFound?.Invoke(this, new FileArgs(file.Name, file.Length));
             }
 
             _stopDetection = false;
