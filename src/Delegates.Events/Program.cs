@@ -14,16 +14,29 @@
             // Обнаружение файлов в каталоге
             var fileDetector = new FileDetector();
             fileDetector.FileFound += FileDetector_FileFound;
+            fileDetector.StoppedDetection += FileDetector_StoppedDetection;
 
             Console.WriteLine($"Файлы в директории: {fileDetector.Path}");
             fileDetector.Detect();
 
+            fileDetector.FileFound -= FileDetector_FileFound;
             Console.ReadKey();
         }
 
         private static void FileDetector_FileFound(object? sender, FileArgs e)
         {
             Console.WriteLine($"{++count}. {e.Name}");
+
+            if (count == 4)
+            {
+                var fileDetector = sender as FileDetector;
+                fileDetector?.Stop();
+            }
+        }
+        
+        private static void FileDetector_StoppedDetection()
+        {
+            Console.WriteLine("Обнаружение файлов остановлено.");
         }
     }
 }

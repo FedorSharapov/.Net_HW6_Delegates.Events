@@ -3,29 +3,46 @@
     internal class FileDetector
     {
         public event EventHandler<FileArgs>? FileFound;
+        public event Action StoppedDetection;
 
         private string _path;
+        private volatile bool _stopDetection;
 
         public string Path => _path;
 
         public FileDetector()
         {
             _path = Directory.GetCurrentDirectory();
+            _stopDetection = false;
         }
 
         public FileDetector(string pathDirectory)
         {
             _path = pathDirectory;
+            _stopDetection = false;
         }
 
         public void Detect()
         {
-            var files = new DirectoryInfo(_path).EnumerateFiles(); //Directory.EnumerateFiles(_path);
+            var files = new DirectoryInfo(_path).EnumerateFiles();
 
             foreach (var file in files)
             {
+                if (_stopDetection)
+                {
+                    StoppedDetection?.Invoke();
+                    break;
+                }
+
                 FileFound?.Invoke(this, new FileArgs(file.Name));
             }
+
+            _stopDetection = false;
+        }
+
+        public void Stop()
+        {
+            _stopDetection = true;
         }
     }
 }
