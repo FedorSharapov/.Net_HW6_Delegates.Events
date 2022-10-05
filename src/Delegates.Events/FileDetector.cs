@@ -8,14 +8,6 @@
         private string _path;
         private volatile bool _stopDetection;
 
-        public string Path => _path;
-
-        public FileDetector()
-        {
-            _path = Directory.GetCurrentDirectory();
-            _stopDetection = false;
-        }
-
         public FileDetector(string pathDirectory)
         {
             _path = pathDirectory;

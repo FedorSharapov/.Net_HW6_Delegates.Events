@@ -8,8 +8,22 @@
                 throw new InvalidOperationException("Cannot compute maximum for a null or empty set.");
             else if(getParameter is null)
                 throw new InvalidOperationException("Cannot compute maximum because delegate converting input type to number is null.");
-            
-            return source.MaxBy(x => getParameter(x));
+
+            T? max = default;
+            var min = float.MinValue;
+            foreach (T s in source)
+            { 
+                var num = getParameter(s);
+                if (num > min)
+                {
+                    max = s;
+                    min = num;
+                }
+            }
+
+            return max;
+
+            //return source.MaxBy(x => getParameter(x));  // при 10 000 000 итераций медленее на 100 мс, чем e.MaxBy из-за использования IComparer<>.
         }
     }
 }
